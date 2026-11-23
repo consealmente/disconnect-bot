@@ -14,7 +14,7 @@ from discord import app_commands
 db = sqlite3.connect(Path(__file__).with_name("rules.sqlite3"))
 db.execute("CREATE TABLE IF NOT EXISTS rules (guild TEXT PRIMARY KEY, target TEXT, trigger TEXT)")
 db.execute("CREATE TABLE IF NOT EXISTS dashboard_versions (guild TEXT PRIMARY KEY, version INTEGER NOT NULL)")
-DASHBOARD_URL = os.environ.get("DASHBOARD_URL", "https://disconnect-bot.vercel.app").rstrip("/")
+DASHBOARD_URL = os.environ.get("DASHBOARD_URL", "https://disconnect-bot-death16.vercel.app").rstrip("/")
 
 
 def version(guild):
