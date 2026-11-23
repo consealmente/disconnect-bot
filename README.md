@@ -10,3 +10,9 @@ Host the dashboard on Vercel (project root `dashboard`, preset Other). Run the P
 5. When the joining member enters or switches into a voice channel, the bot disconnects the listed members present there. Other channels are unaffected. Disable the rule in the dashboard or use /voice_off. The original /voice_rule command still supports a single target and an optional trigger.
 
 Each private link authorizes one edit and expires after about 14 minutes. Keep it private. The website uses the temporary Discord interaction to pass the settings to the running bot. The bot token stays on its host. Restarting the bot ends pending editor sessions. If the connection drops before confirmation, reopen the dashboard and check the saved rule.
+
+## Vercel always-on deployment
+
+Use the existing dashboard project, with dashboard as its root. Connect a private Blob store and add DISCORD_TOKEN as a sensitive Production variable. Deploy to Production to start one Discord daemon in iad1. Its logs appear under the project's runtime logs. The daemon restores its SQLite rules from private Blob storage and writes a version-checked snapshot on changes. Local Windows installations continue using the local database. When moving an existing local installation, re-enter its rule in the hosted dashboard and stop the local process before using the hosted bot.
+
+Hobby's 420 GB-hour monthly quota covers about 17.5 days at the smallest instance size. Full-month continuous running requires sufficient paid capacity. Stop a daemon by scaling its instance count to zero.
