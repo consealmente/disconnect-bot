@@ -1,1 +1,36 @@
-{"outputDirectory":"public","headers":[{"source":"/(.*)","headers":[{"key":"Referrer-Policy","value":"no-referrer"},{"key":"X-Content-Type-Options","value":"nosniff"},{"key":"Content-Security-Policy","value":"default-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"}]}]}
+{
+  "outputDirectory": "public",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
+        }
+      ]
+    }
+  ],
+  "daemons": {
+    "discord": {
+      "root": "worker",
+      "entrypoint": "Dockerfile",
+      "instances": {
+        "iad1": 1
+      },
+      "resources": {
+        "requests": {
+          "memory": "1Gi"
+        }
+      }
+    }
+  }
+}
